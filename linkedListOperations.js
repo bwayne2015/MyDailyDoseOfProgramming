@@ -29,6 +29,26 @@ class LinkedList{
       }
       this.size++
     }
+
+    printList(){
+      console.log("printing current state of the list")
+      let curr = this.head
+      while(curr){
+        console.log(curr.element)
+        curr = curr.next
+        this.size--
+      }
+    }
+    removeElement(element){
+     let prev = this.head
+     let current = prev.next
+     while(current){
+      if(current ===element){
+        prev.next = element.next
+      }
+     }
+
+    }
  
     
   }
@@ -41,11 +61,20 @@ function runLinkedListOperations(choice, value, position){
       break;
     case 'add':
       ll.add(value)
+      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+      ll.printList()
       ll.add(40)
+      ll.printList()
       ll.add(50)
+      ll.printList()
+      ll.removeElement(50)
+      ll.printList()
+      ll.add(100)
+      ll.printList()
+      ll.removeElement(20)
       break;
     case 'printList':
-      console.log(ll.printList())
+      ll.printList()
       break;
     case 'remove':
       console.log(ll.removeElement(value))
@@ -61,10 +90,11 @@ function runLinkedListOperations(choice, value, position){
       break;    
 
     default:
-      console.log("No choice give!!!Exiting")
+      console.log("No choice given!!!Exiting")
   }
 }
 
 runLinkedListOperations('add',20)
-// runLinkedListOperations('add',40)
+console.log('adding complete now printing list')
+// runLinkedListOperations('printlist')
 
